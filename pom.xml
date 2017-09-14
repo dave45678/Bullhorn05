@@ -79,13 +79,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!-- End of MYSQL Dependency -->
-		<!-- H2 Database Dependency -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<!-- End of H2 Database Dependency -->
 	</dependencies>
 
 	<build>
