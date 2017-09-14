@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headstuff"></head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div th:if="${param.error}">
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Oops!</h4>
+                    <p>Invalid username or password. Try again!</p>
+                </div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    You have been logged out.
+                </div>
+            </div>
+            <h2>Login</h2>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label class="control-label" >Username</label>
+                    <input class="form-control" type="text" name="username" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" >Password</label>
+                    <input class="form-control" type="password" name="password" />
+                </div>
+                <div class="col-md-10">
+                    <input class="btn btn-primary btn-block" type="submit" value="Sign In"/>
+                    <a href="/register" class="btn btn-default btn-block">Create an Account</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<nav th:replace="base :: footer"></nav>
+</body>
+</html>
