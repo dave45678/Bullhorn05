@@ -17,16 +17,11 @@ public class Message {
     @Column(name = "message_id")
     private long id;
 
-    @NotNull
-    @Size(min = 1)
-    @Column(name = "sentBy")
-    private String sentBy;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "postDate")
     private Date postDate;
 
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 140)
     @Column(name = "content")
     private String content;
@@ -60,14 +55,6 @@ public class Message {
 
     public void setPostDate(Date postDate) {
         this.postDate = postDate;
-    }
-
-    public String getSentBy() {
-        return sentBy;
-    }
-
-    public void setSentBy(String sentBy) {
-        this.sentBy = sentBy;
     }
 
     public String getPhoto() {

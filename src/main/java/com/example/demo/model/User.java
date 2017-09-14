@@ -127,4 +127,10 @@ public class User {
         this.roles = roles;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                '}';
+    }
 }

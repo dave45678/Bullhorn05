@@ -9,11 +9,11 @@
 <form action="#" th:action="@{/process}" th:object="${message}" method="POST" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}" />
     <h2>Add a Message</h2>
-    <div class="form-group">
+    <!--<div class="form-group">
         <label for="authorInput">Author:</label> <br/>
         <input type="text" class="form-control" id="authorInput" placeholder="Name" th:field="*{sentBy}" />
         <span th:if="${#fields.hasErrors('sentBy')}" th:errors="*{sentBy}"></span>
-    </div>
+    </div>-->
     <div class="form-group">
         <label for="dateInput">Date Posted:</label> <br/>
         <input type="date" class="form-control" id="dateInput" placeholder="MM-dd-YY" th:field="*{postDate}" />
@@ -32,5 +32,10 @@
 
 </form>
 <nav th:replace="base :: footer"></nav>
+
+<script>
+    document.getElementById('datePicker').valueAsDate = new Date();
+</script>
+
 </body>
 </html>

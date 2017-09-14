@@ -38,9 +38,6 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    RoleRepository roleRepository;
-
     @RequestMapping("/")
     public String listMessages(Model model) {
         model.addAttribute("messages", messageRepository.findAll());
@@ -68,14 +65,14 @@ public class HomeController {
                     ObjectUtils.asMap("resourcetype", "auto"));
             message.setPhoto(uploadResult.get("url").toString());
             User currentUser = getCurrentUser();
-            // Get logged in username
+            System.out.println("This is the current user " + currentUser.toString());
             message.setUser(currentUser);
-            message.setPostDate(new Date());
+            //message.setPostDate(new Date());
             currentUser.addMessage(message);
-            // Save message to repositorty
             messageRepository.save(message);
         }
         catch (IOException e) {
+            System.out.println("BEFORE after clause... ");
             e.printStackTrace();
             return "messageform";
         }
@@ -90,7 +87,13 @@ public class HomeController {
     }
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("errornotif", "Your username and password is invalid");
+        }
+        if (logout != null) {
+            model.addAttribute("logoutnotif", "You have been logout successfully.");
+        }
         return "login";
     }
 
@@ -108,7 +111,7 @@ public class HomeController {
         }
         else {
             userService.saveUser(user);
-            model.addAttribute("notification", "User " + user.getUsername() + " successfully created!");
+            model.addAttribute("registernotif", "User " + user.getUsername() + " successfully created!");
         }
         return "list";
     }
