@@ -21,7 +21,7 @@ public class Message {
     @Column(name = "postDate")
     private Date postDate;
 
-    //@NotNull
+    @NotNull
     @Size(min = 1, max = 140)
     @Column(name = "content")
     private String content;
